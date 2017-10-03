@@ -1,0 +1,24 @@
+version: '2'
+services:
+  mautic:
+    image: mautic/mautic
+    environment:
+      MAUTIC_DB_HOST: ${mautic_db_host}
+      MAUTIC_DB_NAME: ${mautic_db_name}
+      MAUTIC_DB_USER: ${mautic_db_user}
+      MAUTIC_DB_PASSWORD: ${mautic_db_password}
+    links:
+      - mauticdb:mysql
+    ports:
+      - ${public_port}:80
+    labels:
+        io.rancher.container.hostname_override: container_name
+        io.rancher.container.pull_image: always
+
+  mauticdb:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ${mautic_db_password}
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.pull_image: always

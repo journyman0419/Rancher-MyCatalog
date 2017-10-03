@@ -1,0 +1,7 @@
+name: Mautic
+description: |
+  Powerful marketing automation.
+version: v1.0.0
+category: Marketiing Automation
+maintainer: Kohsaku Saito<kohsaku.saito@leap-arrows.jp>
+projectURL: https://github.com/KohsakuSaito/rancher-mautic.git 
