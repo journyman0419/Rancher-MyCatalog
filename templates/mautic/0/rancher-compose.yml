@@ -38,4 +38,4 @@
       description: "mautic db password"
       label: "MYSQL_ROOT_PASSWORD"
       required: true
-      type: "string"
+      type: "password"
