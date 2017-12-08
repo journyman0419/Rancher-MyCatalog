@@ -1,0 +1,61 @@
+.catalog:
+  name: "Mautic"
+  version: "2.12.0"
+  description: "Mautic provides free and open source marketing automation software available to everyone. Free email marketing software, lead management software and more."
+  uuid: Mautic-0
+  minimum_rancher_version: v0.51.0
+  questions:    
+
+    - variable: public_port
+      description: "public port to access the mautic site"
+      label: "PUBLIC_PORT"
+      required: true
+      default: "80"
+      type: "int"
+
+    - variable: mautic_db_host
+      description: "mautic database host"
+      label: "MAUTIC_DB_HOST"
+      required: true
+      default: "mysql"
+      type: "string"
+
+    - variable: mautic_db_name
+      description: "mautic database name"
+      label: "MAUTIC_DB_NAME"
+      required: true
+      default: "mautic"
+      type: "string"
+
+    - variable: mautic_db_user
+      description: "mautic user name"
+      label: "MAUTIC_DB_USER"
+      required: true
+      default: "root"
+      type: "string"
+
+    - variable: mautic_db_password
+      description: "mautic db password"
+      label: "MYSQL_ROOT_PASSWORD"
+      required: true
+      type: "password"
+
+    - variable: mautic_version
+      description: "Mautic version/Docker tag used for the Mautic container images."
+      label: "MAUTIC_VERSION"
+      type: enum
+      default: "latest"
+      options:
+        - latest
+        - apache
+        - 2.12-apache
+        - 2.11-apache
+        - 2.10-apache
+        - 2.9-apache
+        - 2.8-apache
+        - fpm
+        - 2.12-fpm
+        - 2.11-fpm
+        - 2.10-fpm
+        - 2.9-fpm
+        - 2.8-fpm
