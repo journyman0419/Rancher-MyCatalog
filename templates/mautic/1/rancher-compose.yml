@@ -4,7 +4,21 @@
   description: "Mautic provides free and open source marketing automation software available to everyone. Free email marketing software, lead management software and more."
   uuid: Mautic-0
   minimum_rancher_version: v0.51.0
-  questions:    
+  questions:
+
+    - variable: mautic_version
+      description: "Mautic version/Docker tag used for the Mautic container images."
+      label: "MAUTIC_VERSION"
+      type: enum
+      default: "latest"
+      options:
+        - latest
+        - apache
+        - 2.12-apache
+        - 2.11-apache
+        - 2.10-apache
+        - 2.9-apache
+        - 2.8-apache
 
     - variable: public_port
       description: "public port to access the mautic site"
@@ -39,23 +53,3 @@
       label: "MYSQL_ROOT_PASSWORD"
       required: true
       type: "password"
-
-    - variable: mautic_version
-      description: "Mautic version/Docker tag used for the Mautic container images."
-      label: "MAUTIC_VERSION"
-      type: enum
-      default: "latest"
-      options:
-        - latest
-        - apache
-        - 2.12-apache
-        - 2.11-apache
-        - 2.10-apache
-        - 2.9-apache
-        - 2.8-apache
-        - fpm
-        - 2.12-fpm
-        - 2.11-fpm
-        - 2.10-fpm
-        - 2.9-fpm
-        - 2.8-fpm
