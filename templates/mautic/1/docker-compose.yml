@@ -13,7 +13,6 @@ services:
       - ${public_port}:80
     labels:
         io.rancher.container.hostname_override: container_name
-        io.rancher.container.pull_image: always
 
   mauticdb:
     image: mysql:5.7
@@ -21,4 +20,3 @@ services:
       MYSQL_ROOT_PASSWORD: ${mautic_db_password}
     labels:
       io.rancher.container.hostname_override: container_name
-      io.rancher.container.pull_image: always
