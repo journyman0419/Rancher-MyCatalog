@@ -9,8 +9,6 @@ services:
       MAUTIC_DB_PASSWORD: ${mautic_db_password}
     links:
       - mauticdb:mysql
-    ports:
-      - ${public_port}:80
     labels:
         io.rancher.container.hostname_override: container_name
 
@@ -20,3 +18,8 @@ services:
       MYSQL_ROOT_PASSWORD: ${mautic_db_password}
     labels:
       io.rancher.container.hostname_override: container_name
+
+  mautic-lb:
+    image: rancher/lb-service-haproxy:v0.7.9
+    ports:
+      - ${public_port}:80
