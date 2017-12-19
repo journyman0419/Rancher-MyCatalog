@@ -64,7 +64,7 @@ services:
       port_rules:
       - protocol: http
         service: mautic
-        source_port: 80
+        source_port: ${public_port}
         target_port: 80
     health_check:
       healthy_threshold: 2
