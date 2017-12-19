@@ -1,6 +1,6 @@
 .catalog:
   name: "Mautic"
-  version: "2.12.0"
+  version: "v2.12"
   description: "Mautic provides free and open source marketing automation software available to everyone. Free email marketing software, lead management software and more."
   uuid: Mautic-0
   minimum_rancher_version: v0.51.0
