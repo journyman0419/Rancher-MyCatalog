@@ -32,7 +32,8 @@ services:
     labels:
       io.rancher.container.hostname_override: container_name
 
-
 volumes:
-    mautic-data:
-    mautic-db:
+  mautic-data:
+    driver: ${volume_driver}
+  mautic-db:
+    driver: ${volume_driver}

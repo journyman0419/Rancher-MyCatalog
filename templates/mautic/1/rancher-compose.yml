@@ -53,3 +53,15 @@
       required: true
       default: "80"
       type: "int"
+
+    - variable: volume_driver
+      description: "Volume driver to use with this service"
+      label: "Volume driver"
+      required: true
+      default: "local"
+      type: enum
+      options:
+        - local
+        - rancher-nfs
+        - rancher-efs
+        - rancher-ebs
