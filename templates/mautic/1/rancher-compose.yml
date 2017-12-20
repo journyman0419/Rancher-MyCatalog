@@ -1,3 +1,5 @@
+version: '2'
+
 .catalog:
   name: "Mautic"
   version: "v2.12"
@@ -74,9 +76,9 @@ services:
       certs: []
       port_rules:
       - protocol: http
-        service: mautic
         source_port: 80
         target_port: 80
+        service: mautic
     health_check:
       response_timeout: 2000
       healthy_threshold: 2
@@ -85,11 +87,3 @@ services:
 
   mautic:
     scale: 1
-    retain_ip: true
-    health_check:
-      port: 80
-      interval: 5000
-      unhealthy_threshold: 3
-      request_line: 'GET / HTTP/1.0'
-      healthy_threshold: 2
-      response_timeout: 5000
