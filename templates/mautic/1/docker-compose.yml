@@ -27,6 +27,11 @@ services:
     image: rancher/lb-service-haproxy:v0.7.9
     ports:
       - ${public_port}:80/tcp
+    links:
+      - mautic-lb:mautic
+    labels:
+      io.rancher.container.hostname_override: container_name
+
 
 volumes:
     mautic-data:
