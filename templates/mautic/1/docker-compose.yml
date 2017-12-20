@@ -7,19 +7,27 @@ services:
       MAUTIC_DB_NAME: ${mautic_db_name}
       MAUTIC_DB_USER: ${mautic_db_user}
       MAUTIC_DB_PASSWORD: ${mautic_db_password}
+    volumes:
+      - mautic-data:/var/www/html
     links:
-      - mauticdb:mysql
+      - mautic-db:mysql
     labels:
         io.rancher.container.hostname_override: container_name
 
-  mauticdb:
+  mautic-db:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: ${mautic_db_password}
+    volumes:
+      - mautic-db:/var/lib/mysql
     labels:
       io.rancher.container.hostname_override: container_name
 
   mautic-lb:
     image: rancher/lb-service-haproxy:v0.7.9
     ports:
-      - ${public_port}:${public_port}
+      - ${public_port}:80/tcp
+
+volumes:
+    mautic-data:
+    mautic-db:
