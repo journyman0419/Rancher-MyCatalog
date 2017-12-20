@@ -1,13 +1,11 @@
 version: '2'
-
-.catalog:
+catalog:
   name: "Mautic"
   version: "v2.12"
   description: "Mautic provides free and open source marketing automation software available to everyone. Free email marketing software, lead management software and more."
   uuid: Mautic-0
   minimum_rancher_version: v0.51.0
   questions:
-
     - variable: mautic_version
       description: "Mautic version/Docker tag used for the Mautic container images."
       label: "MAUTIC_VERSION"
@@ -21,41 +19,35 @@ version: '2'
         - 2.10-apache
         - 2.9-apache
         - 2.8-apache
-
     - variable: mautic_db_host
       description: "mautic database host"
       label: "MAUTIC_DB_HOST"
       required: true
       default: "mysql"
       type: "string"
-
     - variable: mautic_db_name
       description: "mautic database name"
       label: "MAUTIC_DB_NAME"
       required: true
       default: "mautic"
       type: "string"
-
     - variable: mautic_db_user
       description: "mautic user name"
       label: "MAUTIC_DB_USER"
       required: true
       default: "root"
       type: "string"
-
     - variable: mautic_db_password
       description: "mautic db password"
       label: "MAUTIC_DB_PASSWORD"
       required: true
       type: "password"
-
     - variable: public_port
       description: "public port to access the mautic site"
       label: "PUBLIC_PORT"
       required: true
       default: "80"
       type: "int"
-
     - variable: volume_driver
       description: "Volume driver to use with this service"
       label: "Volume driver"
@@ -67,23 +59,20 @@ version: '2'
         - rancher-nfs
         - rancher-efs
         - rancher-ebs
-
 services:
-
   mautic-lb:
     scale: 1
     lb_config:
       certs: []
       port_rules:
       - protocol: http
+        service: mautic
         source_port: 80
         target_port: 80
-        service: mautic
     health_check:
       response_timeout: 2000
       healthy_threshold: 2
       port: 42
       unhealthy_threshold: 3
-
   mautic:
     scale: 1
