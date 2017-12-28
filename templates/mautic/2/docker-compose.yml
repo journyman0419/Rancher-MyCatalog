@@ -21,7 +21,7 @@ services:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: ${mysql_root_password}
-      MYSQL_DATABASE: ${mautic_db_password}
+      MYSQL_DATABASE: ${mautic_db_name}
       MYSQL_USER: ${mautic_db_user}
       MYSQL_PASSWORD: ${mautic_db_password}
     volumes:
