@@ -10,8 +10,6 @@ services:
       MAUTIC_DB_PASSWORD: ${mautic_db_password}
     volumes:
       - mautic-data:/var/www/html
-    links:
-      - mautic-db
     ports:
       - ${public_port}:80
     labels:
