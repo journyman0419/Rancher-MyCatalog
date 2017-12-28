@@ -18,12 +18,6 @@ catalog:
         - 2.10-apache
         - 2.9-apache
         - 2.8-apache
-    - variable: public_port
-      description: "public port to access the mautic site"
-      label: "PUBLIC_PORT"
-      required: true
-      default: "80"
-      type: "int"
     - variable: mautic_db_name
       description: "mautic database name"
       label: "MAUTIC_DB_NAME"
@@ -68,7 +62,7 @@ services:
       port_rules:
       - protocol: http
         service: mautic
-        source_port: ${public_port}
+        source_port: 80
         target_port: 80
     health_check:
       response_timeout: 2000

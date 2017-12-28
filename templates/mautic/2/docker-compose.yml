@@ -4,7 +4,7 @@ services:
   mautic-lb:
     image: rancher/lb-service-haproxy:v0.7.9
     ports:
-      - ${public_port}:80
+      - 80:80
 
   mautic:
     image: mautic/mautic:${mautic_version}
