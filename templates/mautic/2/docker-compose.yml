@@ -15,8 +15,6 @@ services:
       MAUTIC_DB_PASSWORD: ${mautic_db_password}
     volumes:
       - mautic-data:/var/www/html
-    expose:
-      - 80
     labels:
         io.rancher.container.hostname_override: container_name
 
