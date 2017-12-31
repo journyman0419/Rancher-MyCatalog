@@ -15,6 +15,12 @@ catalog:
       options:
         - apache
         - fpm
+    - variable: "publish_port"
+      description: "Public port to publish."
+      label: "Publish port:"
+      required: true
+      default: 80
+      type: "int"
     - variable: mautic_db_name
       description: "mautic database name"
       label: "MAUTIC_DB_NAME"
@@ -59,7 +65,7 @@ services:
       port_rules:
       - protocol: http
         service: mautic
-        source_port: 80
+        source_port: ${publish_port}
         target_port: 80
     health_check:
       response_timeout: 2000

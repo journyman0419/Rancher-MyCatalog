@@ -4,7 +4,7 @@ services:
   mautic-lb:
     image: rancher/lb-service-haproxy:v0.7.9
     ports:
-      - 80:80
+      - ${publish_port}:${publish_port}
 
 {{- if eq .Values.MAUTIC_IMAGE_TYPE "fpm" }}
   web:
