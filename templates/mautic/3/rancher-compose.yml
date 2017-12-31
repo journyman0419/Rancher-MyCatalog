@@ -1,0 +1,68 @@
+version: '2'
+
+catalog:
+  name: "Mautic"
+  version: "v2.12"
+  description: "Mautic provides free and open source marketing automation software available to everyone. Free email marketing software, lead management software and more."
+  uuid: Mautic-0
+  minimum_rancher_version: v0.51.0
+  questions:
+    - variable: mautic_image_type
+      description: "Select use the Mautic image type."
+      label: "MAUTIC_IMAGE_TYPE"
+      type: enum
+      default: "apache"
+      options:
+        - apache
+        - fpm
+    - variable: mautic_db_name
+      description: "mautic database name"
+      label: "MAUTIC_DB_NAME"
+      required: true
+      default: "mautic"
+      type: "string"
+    - variable: mautic_db_user
+      description: "mautic user name"
+      label: "MAUTIC_DB_USER"
+      required: true
+      default: "mautic"
+      type: "string"
+    - variable: mautic_db_password
+      description: "mautic db password"
+      label: "MAUTIC_DB_PASSWORD"
+      required: true
+      default: "password"
+      type: "password"
+    - variable: mysql_root_password
+      description: "mysql_root_password"
+      label: "MYSQL_ROOT_PASSWORD"
+      required: true
+      default: "rootpassword"
+      type: "password"
+    - variable: volume_driver
+      description: "Volume driver to use with this service"
+      label: "Volume driver"
+      required: true
+      default: "local"
+      type: enum
+      options:
+        - local
+        - rancher-nfs
+        - rancher-efs
+        - rancher-ebs
+
+services:
+  mautic-lb:
+    scale: 1
+    lb_config:
+      certs: []
+      port_rules:
+      - protocol: http
+        service: mautic
+        source_port: 80
+        target_port: 80
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
