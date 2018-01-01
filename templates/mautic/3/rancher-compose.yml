@@ -57,18 +57,3 @@ catalog:
         - rancher-efs
         - rancher-ebs
 
-services:
-  mautic-lb:
-    scale: 1
-    lb_config:
-      certs: []
-      port_rules:
-      - protocol: http
-        service: mautic
-        source_port: ${publish_port}
-        target_port: 80
-    health_check:
-      response_timeout: 2000
-      healthy_threshold: 2
-      port: 42
-      unhealthy_threshold: 3
