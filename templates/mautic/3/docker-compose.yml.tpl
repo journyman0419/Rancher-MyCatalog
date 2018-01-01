@@ -1,22 +1,17 @@
 version: '2'
 services:
 
-  mautic-lb:
-    image: rancher/lb-service-haproxy:v0.7.9
-    ports:
-      - ${publish_port}:${publish_port}
-
 {{- if eq .Values.MAUTIC_IMAGE_TYPE "fpm" }}
-  web:
+  nginx:
     image: nginx:1.13-alpine
     links:
         - mautic 
     volumes:
-        - ./web/nginx/nginx.conf:/etc/nginx/nginx.conf
-        - ./web/nginx/www.conf:/etc/nginx/conf.d/www.conf
-        - ./web/nginx/mautic.conf:/etc/nginx/conf.d/mautic.conf
+        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        - ./nginx/www.conf:/etc/nginx/conf.d/www.conf
+        - ./nginx/mautic.conf:/etc/nginx/conf.d/mautic.conf
     volumes_from:
-        - app
+        - mautic
     networks:
         - mautic-networks
     expose:
