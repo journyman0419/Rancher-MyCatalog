@@ -6,10 +6,10 @@ services:
     image: nginx:1.13-alpine
     links:
         - mautic 
-    volumes:
-        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-        - ./nginx/www.conf:/etc/nginx/conf.d/www.conf
-        - ./nginx/mautic.conf:/etc/nginx/conf.d/mautic.conf
+#    volumes:
+#        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+#        - ./nginx/www.conf:/etc/nginx/conf.d/www.conf
+#        - ./nginx/mautic.conf:/etc/nginx/conf.d/mautic.conf
     volumes_from:
         - mautic
     networks:
